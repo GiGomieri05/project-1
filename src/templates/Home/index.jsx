@@ -1,18 +1,18 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback } from 'react';
 
-import "./styles.css";
+import './styles.css';
 
-import { Posts } from "../../components/Posts";
-import { loadPosts } from "../../utils/load-posts";
-import { Button } from "../../components/Button";
-import { TextInput } from "../../components/TextInput";
+import { Posts } from '../../components/Posts';
+import { loadPosts } from '../../utils/load-posts';
+import { Button } from '../../components/Button';
+import { TextInput } from '../../components/TextInput';
 
 export const Home = () => {
   const [posts, setPosts] = useState([]);
   const [allPosts, setAllPosts] = useState([]);
   const [page, setPage] = useState(0);
   const [postsPerPage] = useState(2);
-  const [searchValue, setSearchValue] = useState("");
+  const [searchValue, setSearchValue] = useState('');
 
   const noMorePosts = page + postsPerPage >= allPosts.length;
 
@@ -30,7 +30,7 @@ export const Home = () => {
   }, []);
 
   useEffect(() => {
-    console.log(new Date().toLocaleString("pt-BR"));
+    console.log(new Date().toLocaleString('pt-BR'));
     handleLoadPosts(0, postsPerPage);
   }, [handleLoadPosts, postsPerPage]);
 
@@ -61,13 +61,7 @@ export const Home = () => {
       {filteredPosts.length === 0 && <p>Não existem posts...</p>}
 
       <div className="button-container">
-        {!searchValue && (
-          <Button
-            disabled={noMorePosts}
-            text="Load More Posts"
-            onClick={loadMorePosts}
-          />
-        )}
+        {!searchValue && <Button disabled={noMorePosts} text="Load More Posts" onClick={loadMorePosts} />}
       </div>
     </section>
   );
